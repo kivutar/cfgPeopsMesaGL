@@ -55,7 +55,9 @@ GtkWidget *window,
           *chkCfgFix16384,
           *chkCfgFix32768,
           *chkCfgFix65536,
-          *chkCfgFix131072;
+          *chkCfgFix131072,
+          *btnFast,
+          *btnBeautiful;
 
 // Save values to the config file
 void on_btnSave_clicked( GtkObject *object, gpointer user_data ) {
@@ -121,6 +123,70 @@ void on_btnSave_clicked( GtkObject *object, gpointer user_data ) {
     }
 
     gtk_main_quit();
+}
+
+// Autoconfiguration callbacks
+
+void on_btnFast_clicked( GtkObject *object, gpointer user_data ) {
+    gtk_spin_button_set_value(    GTK_SPIN_BUTTON(   spinXSize ),           320 );
+    gtk_spin_button_set_value(    GTK_SPIN_BUTTON(   spinYSize ),           200 );
+    gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( chkKeepRatio ),          0 );
+    gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( chkDithering ),          0 );
+    gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( chkFullScreen ),         0 );
+    gtk_combo_box_set_active(     GTK_COMBO_BOX(     cbxTexQuality ),         0 );
+    gtk_combo_box_set_active(     GTK_COMBO_BOX(     cbxTexFiltering ),       0 );
+    gtk_combo_box_set_active(     GTK_COMBO_BOX(     cbxHiResTex ),           0 );
+    gtk_spin_button_set_value(    GTK_SPIN_BUTTON(   spinVRam ),              0 );
+    gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( chkShowFPS ),            0 );
+    gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( chkUseFPSLimit ),        0 );
+    gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( radFPSLimitAuto ),       1 );
+    gtk_spin_button_set_value(    GTK_SPIN_BUTTON(   spinFPSLimit ),        200 );
+    gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( chkUseFrameSkipping ),   0 );
+    gtk_combo_box_set_active(     GTK_COMBO_BOX(     cbxOffscreen ),          1 );
+    gtk_combo_box_set_active(     GTK_COMBO_BOX(     cbxFBTex ),              1 );
+    gtk_combo_box_set_active(     GTK_COMBO_BOX(     cbxFBAccess ),           0 );
+    gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( chkMaskDetect ),         0 );
+    gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( chkOpaquePass ),         1 );
+    gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( chkAdvancedBlend ),      0 );
+    gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( chkScanLines ),          0 );
+    gtk_spin_button_set_value(    GTK_SPIN_BUTTON(   spinScanLinesBlend ),    0 );
+    gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( chkFastMdec ),           1 );
+    gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( chk15bitMdec ),          1 );
+    gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( chkLineMode ),           0 );
+    gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( chkAntiAlias ),          0 );
+    gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( chkOGLExtensions ),      1 );
+    gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( chkScreenSmoothing ),    0 );
+}
+
+void on_btnBeautiful_clicked( GtkObject *object, gpointer user_data ) {
+    gtk_spin_button_set_value(    GTK_SPIN_BUTTON(   spinXSize ),           320 );
+    gtk_spin_button_set_value(    GTK_SPIN_BUTTON(   spinYSize ),           240 );
+    gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( chkKeepRatio ),          0 );
+    gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( chkDithering ),          0 );
+    gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( chkFullScreen ),         0 );
+    gtk_combo_box_set_active(     GTK_COMBO_BOX(     cbxTexQuality ),         3 );
+    gtk_combo_box_set_active(     GTK_COMBO_BOX(     cbxTexFiltering ),       0 );
+    gtk_combo_box_set_active(     GTK_COMBO_BOX(     cbxHiResTex ),           0 );
+    gtk_spin_button_set_value(    GTK_SPIN_BUTTON(   spinVRam ),              0 );
+    gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( chkShowFPS ),            0 );
+    gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( chkUseFPSLimit ),        1 );
+    gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( radFPSLimitAuto ),       1 );
+    gtk_spin_button_set_value(    GTK_SPIN_BUTTON(   spinFPSLimit ),        200 );
+    gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( chkUseFrameSkipping ),   0 );
+    gtk_combo_box_set_active(     GTK_COMBO_BOX(     cbxOffscreen ),          3 );
+    gtk_combo_box_set_active(     GTK_COMBO_BOX(     cbxFBTex ),              2 );
+    gtk_combo_box_set_active(     GTK_COMBO_BOX(     cbxFBAccess ),           0 );
+    gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( chkMaskDetect ),         1 );
+    gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( chkOpaquePass ),         1 );
+    gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( chkAdvancedBlend ),      1 );
+    gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( chkScanLines ),          0 );
+    gtk_spin_button_set_value(    GTK_SPIN_BUTTON(   spinScanLinesBlend ),    0 );
+    gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( chkFastMdec ),           0 );
+    gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( chk15bitMdec ),          0 );
+    gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( chkLineMode ),           0 );
+    gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( chkAntiAlias ),          0 );
+    gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( chkOGLExtensions ),      1 );
+    gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( chkScreenSmoothing ),    0 );   
 }
 
 // Callbacks used to toggle the sensitivity of some parts of the GUI
@@ -228,6 +294,8 @@ int main( int argc, char **argv ) {
     chkCfgFix32768      = GTK_WIDGET( gtk_builder_get_object( builder, "chkCfgFix32768"      ) );
     chkCfgFix65536      = GTK_WIDGET( gtk_builder_get_object( builder, "chkCfgFix65536"      ) );
     chkCfgFix131072     = GTK_WIDGET( gtk_builder_get_object( builder, "chkCfgFix131072"     ) );
+    btnFast             = GTK_WIDGET( gtk_builder_get_object( builder, "btnFast"             ) );
+    btnBeautiful        = GTK_WIDGET( gtk_builder_get_object( builder, "btnBeautiful"        ) );
 
     // Read the config file
     in = fopen( "gpuPeopsMesaGL.cfg", "rb" );
@@ -616,6 +684,8 @@ int main( int argc, char **argv ) {
     gtk_signal_connect( GTK_OBJECT( chkUseFPSLimit ),    "toggled", GTK_SIGNAL_FUNC( on_chkUseFPSLimit_toggled ),    NULL );
     gtk_signal_connect( GTK_OBJECT( radFPSLimitManual ), "toggled", GTK_SIGNAL_FUNC( on_radFPSLimitManual_toggled ), NULL );
     gtk_signal_connect( GTK_OBJECT( chkScanLines ),      "toggled", GTK_SIGNAL_FUNC( on_chkScanLines_toggled ),      NULL );
+    gtk_signal_connect( GTK_OBJECT( btnFast ),           "clicked", GTK_SIGNAL_FUNC( on_btnFast_clicked ),           NULL );
+    gtk_signal_connect( GTK_OBJECT( btnBeautiful ),      "clicked", GTK_SIGNAL_FUNC( on_btnBeautiful_clicked ),      NULL );
 
     // Call some callbacks to ensure widget state consistency
     on_chkUseGameFixes_toggled(   GTK_OBJECT( chkUseGameFixes   ), NULL );
